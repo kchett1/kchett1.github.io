@@ -25,6 +25,7 @@
             --project-text: #2d3748;
             --project-title: #1a202c;
             --contact-border: rgba(226, 232, 240, 0.8);
+            --btn-tertiary-bg: linear-gradient(135deg, #4a5568, #2d3748);
         }
 
         [data-theme="dark"] {
@@ -45,6 +46,7 @@
             --project-text: #2d3748;
             --project-title: #1a202c;
             --contact-border: rgba(71, 85, 105, 0.3);
+            --btn-tertiary-bg: linear-gradient(135deg, #4a5568, #2d3748);
         }
 
         * {
@@ -664,6 +666,10 @@
             overflow: hidden;
         }
 
+        [data-theme="dark"] .btn-project-tertiary {
+            background: var(--btn-tertiary-bg);
+        }
+
         .btn-project-tertiary::before {
             content: '';
             position: absolute;
@@ -683,6 +689,10 @@
             background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(100, 116, 139, 0.4);
+        }
+
+        [data-theme="dark"] .btn-project-tertiary:hover {
+            background: linear-gradient(135deg, #2d3748, #1e293b);
         }
 
         /* Contact Section */
@@ -1424,7 +1434,7 @@
             <h2 class="section-title fade-in">Featured Project</h2>
             <div class="project-card fade-in">
                 <div class="project-icon">
-                    <i class="fas fa-camera-retro"></i>
+                    <i class="fas fa-images"></i>
                 </div>
                 <h3 class="project-title">Photography Website</h3>
                 <p class="project-description">
