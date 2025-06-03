@@ -22,6 +22,8 @@
             --border-color: rgba(226, 232, 240, 0.5);
             --accent-blue: #3b82f6;
             --accent-cyan: #06b6d4;
+            --project-text: #4a5568;
+            --contact-border: rgba(226, 232, 240, 0.8);
         }
 
         [data-theme="dark"] {
@@ -39,6 +41,8 @@
             --border-color: rgba(71, 85, 105, 0.3);
             --accent-blue: #60a5fa;
             --accent-cyan: #22d3ee;
+            --project-text: #e2e8f0;
+            --contact-border: rgba(71, 85, 105, 0.3);
         }
 
         * {
@@ -529,7 +533,7 @@
         }
 
         .project-description {
-            color: var(--text-secondary);
+            color: var(--project-text);
             margin-bottom: 2rem;
             line-height: 1.8;
             font-size: 1.1rem;
@@ -696,16 +700,20 @@
         }
 
         .contact-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 15px;
             text-align: center;
             transition: transform 0.3s ease;
             backdrop-filter: blur(10px);
+            border: 2px solid var(--contact-border);
+            box-shadow: 0 4px 20px var(--card-shadow);
         }
 
         .contact-card:hover {
             transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 8px 30px var(--card-shadow);
         }
 
         .contact-icon {
