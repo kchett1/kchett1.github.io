@@ -22,7 +22,8 @@
             --border-color: rgba(226, 232, 240, 0.5);
             --accent-blue: #3b82f6;
             --accent-cyan: #06b6d4;
-            --project-text: #4a5568;
+            --project-text: #2d3748;
+            --project-title: #1a202c;
             --contact-border: rgba(226, 232, 240, 0.8);
         }
 
@@ -42,6 +43,7 @@
             --accent-blue: #60a5fa;
             --accent-cyan: #22d3ee;
             --project-text: #e2e8f0;
+            --project-title: #f1f5f9;
             --contact-border: rgba(71, 85, 105, 0.3);
         }
 
@@ -524,10 +526,7 @@
             font-size: 2rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--project-title);
             position: relative;
             z-index: 2;
         }
