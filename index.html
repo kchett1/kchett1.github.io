@@ -379,6 +379,36 @@
             transform: translateY(-3px);
         }
 
+        /* Resume Download Styling */
+        .btn[href*="Resume"] {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            border-color: #dc2626;
+            animation: pulse-glow 2s infinite;
+        }
+
+        .btn[href*="Resume"]:hover {
+            background: linear-gradient(135deg, #b91c1c, #dc2626);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .social-link[title="Download Resume"] {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+        }
+
+        .social-link[title="Download Resume"]:hover {
+            background: linear-gradient(135deg, #b91c1c, #dc2626);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+            }
+            50% { 
+                box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+            }
+        }
+
         /* Experience Section */
         .experience-grid {
             display: grid;
@@ -998,6 +1028,9 @@
             <p>AI Engineer & Finance Enthusiast interested in crafting intelligent solutions at the intersection of finance and technology</p>
             <div class="cta-buttons">
                 <a href="#experience" class="btn btn-primary">View My Work</a>
+                <a href="Kieran_Chetty_Resume_2024.pdf" class="btn btn-secondary" target="_blank">
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
                 <a href="#contact" class="btn btn-secondary">Get In Touch</a>
             </div>
         </div>
@@ -1031,6 +1064,9 @@
                         </a>
                         <a href="mailto:chettyk@seas.upenn.edu" class="social-link">
                             <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="Kieran_Chetty_Resume_2024.pdf" class="social-link" target="_blank" title="Download Resume">
+                            <i class="fas fa-file-pdf"></i>
                         </a>
                     </div>
                 </div>
