@@ -6,6 +6,41 @@
     <title>Kieran Chetty - AI Engineer & Finance Enthusiast</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* CSS Custom Properties for Light/Dark Mode */
+        :root {
+            /* Light Theme (default) */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #e2e8f0;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(15, 23, 42, 0.95);
+            --hero-overlay: rgba(15, 23, 42, 0.7);
+            --border-color: rgba(226, 232, 240, 0.5);
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --card-bg: #1e293b;
+            --card-shadow: rgba(0, 0, 0, 0.3);
+            --nav-bg: rgba(15, 23, 42, 0.98);
+            --hero-overlay: rgba(15, 23, 42, 0.8);
+            --border-color: rgba(71, 85, 105, 0.3);
+            --accent-blue: #60a5fa;
+            --accent-cyan: #22d3ee;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,8 +50,10 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Navigation */
@@ -24,7 +61,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.95);
+            background: var(--nav-bg);
             backdrop-filter: blur(10px);
             z-index: 1000;
             transition: all 0.3s ease;
@@ -32,7 +69,7 @@
         }
 
         .navbar.scrolled {
-            background: rgba(15, 23, 42, 0.98);
+            background: var(--nav-bg);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
 
@@ -48,7 +85,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -68,7 +105,7 @@
         }
 
         .nav-menu a {
-            color: #e2e8f0;
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
@@ -76,7 +113,7 @@
         }
 
         .nav-menu a:hover {
-            color: #3b82f6;
+            color: var(--accent-blue);
         }
 
         .nav-menu a::after {
@@ -86,7 +123,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
             transition: width 0.3s ease;
         }
 
@@ -94,11 +131,42 @@
             width: 100%;
         }
 
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            color: var(--accent-blue);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .theme-toggle i {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover i {
+            transform: rotate(180deg);
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
             background: 
-                linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)),
+                linear-gradient(var(--hero-overlay), var(--hero-overlay)),
                 url('images/sweek.jpeg') center/cover no-repeat;
             display: flex;
             align-items: center;
@@ -129,7 +197,7 @@
         .hero-avatar {
             width: 150px;
             height: 150px;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
             border-radius: 50%;
             margin: 0 auto 2rem;
             display: flex;
@@ -149,7 +217,7 @@
             font-size: 4rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4, #8b5cf6);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan), #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -158,7 +226,7 @@
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
-            color: #cbd5e1;
+            color: var(--text-muted);
         }
 
         .cta-buttons {
@@ -180,7 +248,7 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
             color: white;
         }
 
@@ -191,12 +259,12 @@
 
         .btn-secondary {
             background: transparent;
-            color: #3b82f6;
-            border: 2px solid #3b82f6;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
         }
 
         .btn-secondary:hover {
-            background: #3b82f6;
+            background: var(--accent-blue);
             color: white;
             transform: translateY(-2px);
         }
@@ -217,7 +285,7 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 3rem;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -225,7 +293,7 @@
 
         /* About Section */
         .about {
-            background: #f8fafc;
+            background: var(--bg-secondary);
         }
 
         .about-grid {
@@ -245,7 +313,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid transparent;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
             padding: 5px;
             box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
             transition: transform 0.3s ease;
@@ -257,7 +325,7 @@
 
         .about-text {
             font-size: 1.1rem;
-            color: #64748b;
+            color: var(--text-secondary);
             line-height: 1.8;
         }
 
@@ -268,11 +336,11 @@
         }
 
         .skill-item {
-            background: white;
+            background: var(--card-bg);
             padding: 1rem;
             border-radius: 10px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px var(--card-shadow);
             transition: transform 0.3s ease;
         }
 
@@ -289,7 +357,7 @@
         .social-link {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
             color: white;
             border-radius: 50%;
             display: flex;
@@ -310,10 +378,10 @@
         }
 
         .experience-card {
-            background: white;
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px var(--card-shadow);
             transition: transform 0.3s ease;
         }
 
@@ -332,18 +400,18 @@
         .experience-title {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #1e293b;
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
 
         .experience-company {
             font-size: 1.1rem;
-            color: #3b82f6;
+            color: var(--accent-blue);
             font-weight: 600;
         }
 
         .experience-period {
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -360,19 +428,19 @@
             position: relative;
             padding-left: 1.5rem;
             margin-bottom: 0.8rem;
-            color: #64748b;
+            color: var(--text-secondary);
         }
 
         .experience-highlights li::before {
             content: '▶';
             position: absolute;
             left: 0;
-            color: #3b82f6;
+            color: var(--accent-blue);
         }
 
         /* Projects Section */
         .projects {
-            background: #f8fafc;
+            background: var(--bg-secondary);
             position: relative;
             overflow: hidden;
         }
@@ -389,7 +457,7 @@
         }
 
         .projects .section-title {
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -434,7 +502,7 @@
 
         .project-icon {
             font-size: 4rem;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -452,7 +520,7 @@
             font-size: 2rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #2d3748, #4a5568);
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -461,7 +529,7 @@
         }
 
         .project-description {
-            color: #4a5568;
+            color: var(--text-secondary);
             margin-bottom: 2rem;
             line-height: 1.8;
             font-size: 1.1rem;
@@ -480,7 +548,7 @@
         }
 
         .tech-tag {
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 25px;
@@ -521,7 +589,7 @@
         }
 
         .btn-project-primary {
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
             color: white;
             padding: 1rem 2rem;
             border: none;
@@ -558,8 +626,8 @@
 
         .btn-project-secondary {
             background: transparent;
-            color: #3b82f6;
-            border: 2px solid #3b82f6;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
             padding: 1rem 2rem;
             border-radius: 50px;
             font-weight: 700;
@@ -571,14 +639,14 @@
         }
 
         .btn-project-secondary:hover {
-            background: #3b82f6;
+            background: var(--accent-blue);
             color: white;
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
         }
 
         .btn-project-tertiary {
-            background: linear-gradient(135deg, #64748b, #475569);
+            background: linear-gradient(135deg, var(--text-secondary), var(--text-primary));
             color: white;
             border: none;
             padding: 1rem 2rem;
@@ -609,15 +677,15 @@
         }
 
         .btn-project-tertiary:hover {
-            background: linear-gradient(135deg, #475569, #334155);
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(100, 116, 139, 0.4);
         }
 
         /* Contact Section */
         .contact {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: white;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+            color: var(--text-primary);
         }
 
         .contact-grid {
@@ -642,7 +710,7 @@
 
         .contact-icon {
             font-size: 2.5rem;
-            color: #3b82f6;
+            color: var(--accent-blue);
             margin-bottom: 1rem;
         }
 
@@ -653,12 +721,12 @@
         }
 
         .contact-text {
-            color: #cbd5e1;
+            color: var(--text-secondary);
         }
 
         /* Photo Gallery Section */
         .gallery {
-            background: #f8fafc;
+            background: var(--bg-secondary);
         }
 
         .gallery-grid {
@@ -717,7 +785,7 @@
 
         .gallery-description {
             font-size: 0.9rem;
-            color: #cbd5e1;
+            color: var(--text-secondary);
         }
 
         /* Modal for full-size images */
@@ -758,7 +826,7 @@
         }
 
         .close:hover {
-            color: #3b82f6;
+            color: var(--accent-blue);
         }
 
         /* Navigation arrows for gallery */
@@ -785,7 +853,7 @@
 
         .modal-nav:hover {
             background: rgba(59, 130, 246, 0.3);
-            border-color: #3b82f6;
+            border-color: var(--accent-blue);
             transform: translateY(-50%) scale(1.1);
         }
 
@@ -824,8 +892,8 @@
 
         /* Footer */
         .footer {
-            background: #0f172a;
-            color: #64748b;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
             text-align: center;
             padding: 2rem 0;
         }
@@ -840,6 +908,14 @@
                 text-align: center;
             }
             .nav-menu { display: none; }
+            .nav-container {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            .theme-toggle {
+                order: 2;
+                margin-left: auto;
+            }
             .experience-header { flex-direction: column; align-items: flex-start; }
             .cta-buttons { flex-direction: column; align-items: center; }
             
@@ -890,6 +966,10 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="theme-toggle">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+            </button>
         </div>
     </nav>
 
@@ -905,7 +985,7 @@
             </div>
         </div>
         <div class="scroll-indicator">
-            <i class="fas fa-chevron-down" style="color: #3b82f6; font-size: 1.5rem;"></i>
+            <i class="fas fa-chevron-down" style="color: var(--accent-blue); font-size: 1.5rem;"></i>
         </div>
     </section>
 
@@ -943,7 +1023,7 @@
                 </div>
                 
                 <div class="fade-in">
-                    <h3 style="color: #1e293b; margin-bottom: 1.5rem; font-size: 1.5rem;">Technical Skills</h3>
+                    <h3 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.5rem;">Technical Skills</h3>
                     <div class="skills-grid">
                         <div class="skill-item">Java</div>
                         <div class="skill-item">Python</div>
@@ -970,7 +1050,7 @@
                         <div>
                             <div class="experience-title">A.I. Research Intern</div>
                             <div class="experience-company">UPenn AI Research Lab under Chris Callison-Burch</div>
-                            <div style="color: #64748b; margin-top: 0.5rem;">Philadelphia, PA</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">Philadelphia, PA</div>
                         </div>
                         <div class="experience-period">May 2025 - Present</div>
                     </div>
@@ -986,7 +1066,7 @@
                         <div>
                             <div class="experience-title">Software Developer Intern</div>
                             <div class="experience-company">Cultural I.P. (Startup)</div>
-                            <div style="color: #64748b; margin-top: 0.5rem;">Remote</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">Remote</div>
                         </div>
                         <div class="experience-period">May 2025 - Present</div>
                     </div>
@@ -1001,7 +1081,7 @@
                         <div>
                             <div class="experience-title">Quantitative Finance/Global Macro Team Analyst</div>
                             <div class="experience-company">Wharton Asia Exchange (WAX)</div>
-                            <div style="color: #64748b; margin-top: 0.5rem;">Philadelphia, PA</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">Philadelphia, PA</div>
                         </div>
                         <div class="experience-period">Oct 2024 - Present</div>
                     </div>
@@ -1017,7 +1097,7 @@
                         <div>
                             <div class="experience-title">Quantitative Finance Team Analyst</div>
                             <div class="experience-company">Wharton Undergarduate Finance Club (WUFC)</div>
-                            <div style="color: #64748b; margin-top: 0.5rem;">Philadelphia, PA</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">Philadelphia, PA</div>
                         </div>
                         <div class="experience-period">Feb 2024 - Present</div>
                     </div>
@@ -1032,7 +1112,7 @@
                         <div>
                             <div class="experience-title">Investment Banking Intern</div>
                             <div class="experience-company">City of London Investment Management Company Limited</div>
-                            <div style="color: #64748b; margin-top: 0.5rem;">West Chester, PA</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">West Chester, PA</div>
                         </div>
                         <div class="experience-period">June 2024 – Aug 2024</div>
                     </div>
@@ -1049,7 +1129,7 @@
                         <div>
                             <div class="experience-title">Program Teaching Assistant</div>
                             <div class="experience-company">University of Pennsylvania Summer Science Initiative (PSSI)</div>
-                            <div style="color: #64748b; margin-top: 0.5rem;">Philadelphia, PA</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">Philadelphia, PA</div>
                         </div>
                         <div class="experience-period">July 2023 – Aug 2024</div>
                     </div>
@@ -1071,7 +1151,7 @@
     <section class="section gallery" id="gallery">
         <div class="container">
             <h2 class="section-title fade-in">Life & Memories</h2>
-            <p class="fade-in" style="text-align: center; color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem;">
+            <p class="fade-in" style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem;">
                 A glimpse into my journey through university, friendships, and some memorable moments.
             </p>
             <div class="gallery-grid">
@@ -1372,8 +1452,8 @@
     <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container">
-            <h2 class="section-title fade-in" style="color: white;">Let's Connect</h2>
-            <p class="fade-in" style="text-align: center; color: #cbd5e1; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+            <h2 class="section-title fade-in" style="color: var(--text-primary);">Let's Connect</h2>
+            <p class="fade-in" style="text-align: center; color: var(--text-secondary); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
                 I'm always interested in discussing new opportunities, AI innovations, 
                 or potential collaborations in fintech and beyond.
             </p>
@@ -1402,7 +1482,7 @@
                     <p class="contact-text">View my projects</p>
                 </a>
             </div>
-            <p class="fade-in" style="text-align: center; color: #64748b; margin-top: 3rem;">
+            <p class="fade-in" style="text-align: center; color: var(--text-secondary); margin-top: 3rem;">
                 📍 Currently based in Philadelphia, PA
             </p>
         </div>
@@ -1553,6 +1633,40 @@
                 }
             }
         });
+
+        // Theme Toggle Functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateThemeButton(currentTheme);
+
+        // Theme toggle event listener
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeButton(newTheme);
+        });
+
+        // Update theme button appearance
+        function updateThemeButton(theme) {
+            if (theme === 'dark') {
+                themeIcon.className = 'fas fa-sun';
+                themeText.textContent = 'Light Mode';
+            } else {
+                themeIcon.className = 'fas fa-moon';
+                themeText.textContent = 'Dark Mode';
+            }
+        }
+
+        // Smooth theme transition
+        document.documentElement.style.setProperty('--transition-speed', '0.3s');
     </script>
 </body>
 </html> 
